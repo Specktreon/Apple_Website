@@ -33,6 +33,7 @@ import frame from "/assets/images/frame.png";
 import apple from "/assets/images/apple.png";
 import sac from "/assets/images/sac.png";
 import chercher from "/assets/images/chercher.png";
+// import watch from "/assets/images/watch.png";
 
 export const heroVideo = hmv;
 export const smallHeroVideo = smallmv;
@@ -43,6 +44,7 @@ export const highlightFourthVideo = highlightFourthmv;
 export const exploreVideo = exploremv;
 export const frameVideo = framemv;
 
+// export const watchImg = watch;
 export const sacImg = sac;
 export const chercherImg = chercher;
 export const appleImg = apple;
