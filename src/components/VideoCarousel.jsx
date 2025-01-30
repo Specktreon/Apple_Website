@@ -1,7 +1,30 @@
-import React from "react";
 import { hightlightsSlides } from "../constants";
+import { useEffect, useRef, useState } from "react";
 
 const VideoCarousel = () => {
+  const videoRef = useRef([]);
+  const videoSpanRef = useRef([]);
+  const videoDivRef = useRef([]);
+
+  useState[(Video, setVideo)] = useState({
+    isEnd: false,
+    startPlay: false,
+    videoId: 0,
+    isLastVideo: false,
+    isPlaying: false,
+  });
+
+  const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
+
+  useEffect(() => {
+    const currentProgress = 0;
+    let span = videoSpanRef.current;
+
+    if (span[videoId]) {
+        let anim = 
+    }
+  }, [videoId, startPlay]);
+
   return (
     <>
       <div className="flex items-center">
