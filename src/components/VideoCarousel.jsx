@@ -47,14 +47,35 @@ const VideoCarousel = () => {
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
 
+  const handleLoadedMetadata = (i, e) => setloadedData((pre) => [...pre, e]);
+
   useEffect(() => {
-    const currentProgress = 0;
+    let currentProgress = 0;
     let span = videoSpanRef.current;
 
     if (span[videoId]) {
       let anim = gsap.to(span[videoId], {
-        onUpdate: () => {},
+        onUpdate: () => {
+          const progress = Math.ceil(anim.progress() * 100);
 
+          if (progress != currentProgress) {
+            currentProgress = progress;
+
+            gsap.to(videoDivRef.current[videoId], {
+              width:
+                window.innerWidth < 760
+                  ? "10vw"
+                  : window.innerWidth < 1200
+                  ? "10vw"
+                  : "4vw",
+            });
+
+            gsap.to(span[videoId], {
+              width: `${currentProgress}%`,
+              backgroundColor: "white",
+            });
+          }
+        },
         onComplete: () => {},
       });
     }
@@ -86,7 +107,20 @@ const VideoCarousel = () => {
           <div key={list.id} id="slider" className="sm-pr-20 pr-10">
             <div className="video-carousel_container">
               <div className="w-full h-full flex-center rounded-3xl overflow-hidden bg-black">
-                <video id="video" playsInline={true} preload="auto" muted>
+                <video
+                  id="video"
+                  playsInline={true}
+                  preload="auto"
+                  muted
+                  ref={(el) => (videoRef.current[i] = el)}
+                  onPlay={() => {
+                    setVideo((prevVideo) => ({
+                      ...prevVideo,
+                      isPlaying: true,
+                    }));
+                  }}
+                  onLoadedMetadata={(e) => handleLoadedMetadata(i, e)}
+                >
                   <source src={list.video} type="video/mp4" />
                 </video>
               </div>
