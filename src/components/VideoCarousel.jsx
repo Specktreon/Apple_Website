@@ -2,6 +2,7 @@ import { hightlightsSlides } from "../constants";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { replayImg, playImg, pauseImg } from "../utils";
+import { useGSAP } from "@gsap/react";
 
 const VideoCarousel = () => {
   const videoRef = useRef([]);
@@ -19,6 +20,22 @@ const VideoCarousel = () => {
   const [loadedData, setloadedData] = useState([]);
 
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
+
+  useGSAP(() => {
+    gsap.to("#video", {
+      scrollTrigger: {
+        trigger: "#video",
+        toggleActions: "restart none none none",
+      },
+      onComplete: () => {
+        setVideo((pre) => ({
+          ...pre,
+          startPlay: true,
+          isPlaying: true,
+        }));
+      },
+    });
+  }, [isEnd, videoId]);
 
   useEffect(() => {
     if (loadedData.length > 3) {
