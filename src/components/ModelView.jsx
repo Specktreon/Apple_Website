@@ -2,7 +2,7 @@
 import { PerspectiveCamera, View } from "@react-three/drei";
 
 import Lights from "./Lights";
-import iPhone from "./iPhone";
+import IPhone from "./IPhone";
 import { Suspense } from "react";
 
 const ModelView = ({
@@ -29,7 +29,7 @@ const ModelView = ({
       <Lights />
 
       <Suspense fallback={<div>Loading</div>}>
-        <iPhone />
+        <IPhone />
       </Suspense>
     </View>
   );
