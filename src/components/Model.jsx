@@ -2,15 +2,14 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ModelView from "./ModelView";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { yellowImg } from "../utils";
 
 import * as THREE from "three";
-import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { View } from "@react-three/drei";
 
-import { models } from "../constants";
-import { sizes } from "../constants";
+import { models, sizes } from "../constants";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -77,6 +76,8 @@ const Model = () => {
               eventSource={document.getElementById("root")}
             >
               <View.Port />
+              {/* <View index={1} /> */}
+              <View />
             </Canvas>
           </div>
           <div className="mx-auto w-full">
